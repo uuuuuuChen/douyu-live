@@ -1,0 +1,26 @@
+const koa = require('koa')
+const app = new koa()
+const cors = require('koa-cors')
+const router = require('koa-router')()
+const partitionsRouter = require('./routes/partitions')
+const mixvideosRouter = require('./routes/mixvideos')
+const listRouter = require('./routes/list')
+const todaytopRouter = require('./routes/todaytop')
+const transferRouter = require('./routes/transfer')
+
+
+app.use(cors())
+router.use('/cate',partitionsRouter)
+router.use('/cate',listRouter)
+router.use('/home',mixvideosRouter)
+router.use('/search',todaytopRouter)
+router.use('/transfer',transferRouter)
+app.use(router.routes())
+
+app.use((ctx) => {
+    ctx.body = '后端运行成功(前面的路由有问题！！)'
+})
+
+app.listen(3030, () => {
+    console.log("You app is running")
+})
