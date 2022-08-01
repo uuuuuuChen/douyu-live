@@ -28,7 +28,53 @@ export const HomeWrapper = styled.div`
 export const ContentWrapper = styled.div`
     overflow: scroll;
     .video-list {
+        padding-left: 5px;
         height: 100vh;
         overflow: scroll;
+        margin-top: 10px;
+        .HomeLive-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            /* padding: 0 5px; */
+            width: 100%;
+            height: 42px;
+        }
+        
+        .HomeLive-titleLive {
+            padding-left: 30px;
+            height: 100%;
+            line-height: 42px;
+            color: #333;
+            font-size: 15px;
+            background: url(https://shark2.douyucdn.cn/front-publish/m-douyu-v3-master/assets/images/icon-live_88adc06.png) no-repeat;
+            -webkit-background-size: 20px 12px;
+            -moz-background-size: 20px 12px;
+            background-size: 20px 12px;
+            background-position: 0;
+        }
+        .HomeLive-titleNum {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            line-height: 42px;
+        }
+        .HomeLive-titleNumText {
+            display: block;
+            height: 100%;
+            font-size: 13px;
+            color: #999;
+        }
+        .HomeLive-titleNumText.mark {
+        color: #f70;
+        }
+        .icon-right {
+        margin: 0 5px;
+        font-size: ${px2rem(13)};
+        float: right;
+        color: rgb(210,210,210);
+        }
     }
 `

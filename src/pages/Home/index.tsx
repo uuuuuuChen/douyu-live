@@ -5,13 +5,13 @@ import VideoItem from '@/components/VideoItem'
 import { getPartitionsRequest } from '@/api/request'
 import { connect } from 'react-redux'
 import { rootState } from '@/store'
-import { 
+import {
     getHomeDataAction,
     getListAction
- } from '@/store/actionCreators'
-import { 
+} from '@/store/actionCreators'
+import {
     HomeWrapper,
-    ContentWrapper 
+    ContentWrapper
 } from './style'
 // import { PartitionType } from '@/models/index'
 // import TabBar from '@/components/TabBar'
@@ -49,26 +49,41 @@ const Home: React.FC<HomeProps> = (props) => {
     const handleClick = () => {
 
     }
+    const renderTitle = (
+        <div className="HomeLive-title" >
+            <div className="HomeLive-titleLive">全部直播</div>
+            <div className="HomeLive-titleNum">
+                <span className="HomeLive-titleNumText">当前</span>
+                <span className="HomeLive-titleNumText mark">21726</span>
+                <span className="HomeLive-titleNumText">个直播</span>
+                <i className='fa fa-chevron-circle-right icon-right'></i>
+            </div>
+        </div>
+    )
+
     const videoElements = mixvideos.map(
-        (video:any) => {
-            return <VideoItem 
-                        video={video} 
-                        key={video.rid + Math.random()*100000} 
-                        showStatistics={true}/>
+        (video: any) => {
+            return (
+                <VideoItem
+                    video={video}
+                    key={video.rid + Math.random() * 100000}
+                    showStatistics={true} />
+            )
         }
     )
 
     return (
         <HomeWrapper className='top-wrapper'>
-            <Header 
-                data={partitions} 
-                cate1Info={cate1Info} 
+            <Header
+                data={partitions}
+                cate1Info={cate1Info}
                 cate2Info={cate2Info}
                 loading={loading}
                 getListDataActionDispatch={getListDataActionDispatch}
-                />
+            />
             <ContentWrapper>
                 <div className="video-list clear">
+                    {renderTitle}
                     {videoElements}
                 </div>
             </ContentWrapper>
@@ -76,7 +91,7 @@ const Home: React.FC<HomeProps> = (props) => {
     )
 }
 
-const mapStateToProps = (state:rootState) => ({
+const mapStateToProps = (state: rootState) => ({
     partitions: state.homedata.partitions,
     mixvideos: state.homedata.mixvideos,
     cate1Info: state.homedata.cate1Info,
@@ -85,7 +100,7 @@ const mapStateToProps = (state:rootState) => ({
     loading: state.homedata.loading
 })
 
-const mapDispatchToProps = (dispatch:any) => ({
+const mapDispatchToProps = (dispatch: any) => ({
     getHomeDataActionDispatch() {
         dispatch(getHomeDataAction())
     },

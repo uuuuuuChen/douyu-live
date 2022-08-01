@@ -3,7 +3,6 @@ import { Video } from '@/models/Video'
 import { VideoWrapper } from './style'
 import { Link } from 'react-router-dom'
 import tv from '@/assets/images/douyu.png'
-import LazyLoad from 'react-lazyload'
 import { formatTenThousand } from '@/utils/string'
 import { baseURL } from '@/api/config'
 
@@ -24,17 +23,19 @@ const VideoItem: React.FC<VideoItemProps> = (props) => {
             <Link to={"/video/av" + video.rid} className="video-link">
                 <div className="image-container">
                     <div className="image-wrapper">
+                        <div className='hotdu'>
+                            <i className="iconfont icon-redu iconhot"></i>
+                            <span className="barrage-count">
+                                {video.hn ? video.hn : ''
+                                }
+                            </span>
+                        </div>
                         <img src={tv} alt="" className='tv' />
                         {
                             video.roomSrc && (
-                                // <LazyLoad height={'100%'} offset={100}>
-                                //     <img src={baseURL + '/transfer/image?pic=' + video.pic + '@320w_200h'} className="pic" alt={video.title}
-                                //         onLoad={(e) => e.currentTarget.style.opacity = "1"}
-                                //     />
-                                    <img src={video.roomSrc} className="pic" alt={video.cate2Name}
-                                        onLoad={(e) => e.currentTarget.style.opacity = "1"}
-                                    />
-                                // {/* </LazyLoad> */}
+                                <img src={video.roomSrc} className="pic" alt={video.cate2Name}
+                                    onLoad={(e) => e.currentTarget.style.opacity = "1"}
+                                />
                             )
                         }
                         <div className="cover">
@@ -42,18 +43,12 @@ const VideoItem: React.FC<VideoItemProps> = (props) => {
                                 showStatistics && (
                                     <div className="info">
                                         <span className="play-icon icon-play-count">
-                                        <span className="play-count">
-                                            {video.nickname ?
-                                                video.nickname : ''
-                                            }
+                                            <i className='iconfont icon-geren icon'></i>
+                                            <span className="play-count">
+                                                {video.nickname ? video.nickname : ''
+                                                }
+                                            </span>
                                         </span>
-                                        </span>
-                                        {/* <span className="barrage-icon icon-barrage-count"></span>
-                                        <span className="barrage-count">
-                                            {video.hn ?
-                                                video.hn : ''
-                                            }
-                                        </span> */}
                                     </div>
                                 )
                             }
