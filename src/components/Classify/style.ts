@@ -9,21 +9,6 @@ export const ClassifyWrapper = styled.div`
         background: #fff;
     }
     .headerClose {
-        /* z-index: 999;
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        transform: translateY(-50%);
-        width: 26px;
-        height: 26px;
-        background: url(https://shark2.douyucdn.cn/front-publish/m-douyu-v3-master/assets/images/close_8b63a1d.png) no-repeat;
-        background-size: 16px 16px;
-        background-position: 50%; */
-        /* display: inline-block; */
         width: 26px;
         height: 26px;
         position: absolute;
@@ -60,7 +45,7 @@ export const ClassifyWrapper = styled.div`
         height: 44px;
     }
 
-    .content {
+    .classifycontent {
         width: 100%;
         height: 375px;
         background-color: #f4f4f4;
@@ -137,5 +122,8 @@ export const ClassifyWrapper = styled.div`
     .adm-tabs-tab-wrapper {
         padding: 0;
         margin: 0 11px;
+    }
+    .adm-popup-body {
+    z-index: 9999;
     }
 `

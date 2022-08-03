@@ -6,7 +6,7 @@ export const VideoWrapper = styled.div`
     width: 50%;
     padding: 0 ${px2rem(5)} ${px2rem(5)} 0;
     /* padding: 0 ${px2rem(5)}; */
-    margin-bottom: ${px2rem(10)};
+    /* margin-bottom: ${px2rem(10)}; */
     box-sizing: border-box;
     /* overflow: scroll; */
     .video-link{
@@ -14,12 +14,12 @@ export const VideoWrapper = styled.div`
         .image-container {
             position: relative;
             width: 100%;
-            padding-bottom: 63%;
+            padding-bottom: 58%;  // 63
             .hotdu {
                 position: absolute;
                 top: -4px;
                 left: 0;
-                z-index: 999;
+                z-index: 998;
                 box-sizing: border-box;
                 padding-right: 5px;
                 width: 100%;
@@ -36,6 +36,7 @@ export const VideoWrapper = styled.div`
                 height: 11px;
                 font-size: 11px;
                 font-weight: 700;
+                color: #fff;
                 }
             .barrage-count {
                     /* display: block; */
@@ -49,7 +50,7 @@ export const VideoWrapper = styled.div`
                 top: 0;
                 left: 0;
                 width: 100%;
-                height: 100%;
+                /* height: 100%; */
                 background-color: #e7e7e7;
                 background-image: linear-gradient(transparent 50%, rgba(0, 0, 0, .5));
                 border-radius: ${px2rem(6)};
@@ -57,14 +58,14 @@ export const VideoWrapper = styled.div`
                 overflow: hidden;
                 .tv {
                     width: ${px2rem(104)};
-                    height: 100%;
+                    height: ${px2rem(101)};
                 }
                 .pic {
                     position: absolute;
                     left: 0;
                     top: 0;
                     width: 100%;
-                    height: 100%;
+                    /* height: 100%; */
                     z-index: 1;
                     opacity: 0;
                     transition: opacity .3s ease;

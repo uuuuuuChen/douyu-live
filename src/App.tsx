@@ -1,12 +1,19 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect,Suspense } from 'react'
 import { GlobalStyle } from './style'
 import Routes from '@/routes'
+import './App.css'
+import Header from './components/Header'
 
 const App = () => {
     return (
-        <div className="App">
+        <div className="App" style={{height:"100%"}}>
             <GlobalStyle />
-            <Routes/>
+            <Header/>
+            <div className='content'>
+            <Suspense fallback={<></>}>
+              <Routes/> 
+            </Suspense>
+            </div>
         </div>
     )
 }

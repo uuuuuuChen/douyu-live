@@ -37,7 +37,7 @@ const Classify:React.FC<ClassifyProps> = (props) => {
         </Tabs>
         </div>
       </div>
-      <div className="content" id='content'>
+      <div className="classifycontent" id='content'>
         <ul className='classifyItem'>
         {NavItemList}
         </ul> 

@@ -3,9 +3,14 @@ import { px2rem } from '@/assets/global-style'
 
 // 44px  苹果tabbar的高度(标准)
 export const HeaderWrapper = styled.div`
-    height: ${px2rem(100)};
-    /* margin: ${px2rem(2)}; */
+    padding-bottom: ${px2rem(2)};
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
     background-color: #fff;
+    height: ${px2rem(100)};
     .header {
         display: flex;
         align-items: center;
@@ -46,7 +51,7 @@ export const HeaderWrapper = styled.div`
             padding-left: ${px2rem(32.5)};
             font-size: ${px2rem(14)};
             color: #bbb;
-            /* line-height: 28px; */
+            line-height: 28px;
             display: flex;
             flex: 1;
         }
@@ -56,6 +61,60 @@ export const HeaderWrapper = styled.div`
         position: relative;
         height: ${px2rem(44)};
         background-color: #fff;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        .HomeNav-content { 
+            /* box-sizing: border-box; */
+            padding-right: 45px;
+            width: 100%;
+            height: 100%;
+            font-size: 0;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling:touch;
+            /* padding-bottom:25px; */
+        }
+        .HomeNav-content::-webkit-scrollbar{ display:none}
+        
+        a {
+            position: relative;
+            /* overflow: scroll; */
+            /* scrollbar-width: none; */
+            &.active{
+                color: #ff5d23;
+                font-weight: 700;
+            }
+            &.active::after
+            {
+                content: "";
+                background-color: #fa7122;
+                width: 1rem;
+                height: 0.1rem;
+                /* font-size: 1.5rem; */
+                position: absolute;
+                bottom: -13px;
+                left: 0;
+                right: 0;
+                margin-left: auto;
+                margin-right: auto;
+            }      
+            span {
+                /* width: 30px; */
+                margin: 0 11px;
+                font-size: ${px2rem(14)};
+                display: inline-block;
+                vertical-align: middle;
+                height: ${px2rem(44)};
+                line-height: ${px2rem(44)};
+                /* color: black; */
+            }
+           
+        }
         .tabs {
             /* position: relative; */
             font-size: ${px2rem(14)};
@@ -96,5 +155,8 @@ export const HeaderWrapper = styled.div`
         height: var(--active-line-height);
         background: #fa7122;
         border-radius: var(--active-line-border-radius);
+    }
+    .adm-popup-body {
+    z-index: 9999;
     }
 `

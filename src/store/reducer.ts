@@ -25,7 +25,7 @@ export const partitionsReducer = (state = initialState, action:AnyAction) => {
                 arr.push(...action.data[i].list)
             }
             // let lolvideos = action.data[1].list
-            // console.log(len,arr,arr[0].rid)
+            // console.log(action.data)
             return {
                 ...state,
                 mixvideos: arr

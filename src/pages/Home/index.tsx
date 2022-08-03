@@ -1,22 +1,16 @@
 import React, { useEffect } from 'react'
-import { AnyAction, Dispatch } from 'redux'
-import Header from '@/components/Header'
+import { Empty } from 'antd-mobile'
 import VideoItem from '@/components/VideoItem'
-import { getPartitionsRequest } from '@/api/request'
 import { connect } from 'react-redux'
 import { rootState } from '@/store'
+import Logo from '@/assets/images/logo.png'
 import {
     getHomeDataAction,
     getListAction
 } from '@/store/actionCreators'
 import {
-    HomeWrapper,
     ContentWrapper
 } from './style'
-// import { PartitionType } from '@/models/index'
-// import TabBar from '@/components/TabBar'
-import { formatTenThousand } from '@/utils/string'
-
 interface HomeProps {
     partitions: any[],
     mixvideos: any[],
@@ -46,9 +40,6 @@ const Home: React.FC<HomeProps> = (props) => {
     useEffect(() => {
         getHomeDataActionDispatch()
     }, [])
-    const handleClick = () => {
-
-    }
     const renderTitle = (
         <div className="HomeLive-title" >
             <div className="HomeLive-titleLive">全部直播</div>
@@ -60,6 +51,18 @@ const Home: React.FC<HomeProps> = (props) => {
             </div>
         </div>
     )
+    
+    // const arr = new Array(11)
+    // mixvideos.map(() => {
+    //     for (let i = 0; i< arr.length; i++) {
+    //         arr.push(mixvideos.slice(i*4,(i+1)*4))  
+    //     } 
+    // })
+    // console.log(arr,arr.length)
+
+    // arr.map((item:any) => {
+    //     console.log(item)
+    // })
 
     const videoElements = mixvideos.map(
         (video: any) => {
@@ -71,23 +74,32 @@ const Home: React.FC<HomeProps> = (props) => {
             )
         }
     )
-
+    
+    const backtop =() => {
+        console.log(666)
+        window.scrollTo(0,0);
+    }
+        
     return (
-        <HomeWrapper className='top-wrapper'>
-            <Header
-                data={partitions}
-                cate1Info={cate1Info}
-                cate2Info={cate2Info}
-                loading={loading}
-                getListDataActionDispatch={getListDataActionDispatch}
-            />
             <ContentWrapper>
                 <div className="video-list clear">
-                    {renderTitle}
-                    {videoElements}
+                    { loading ? '' : renderTitle}
+                    { loading ? <Empty style={{ padding: '64px 0' }} imageStyle={{ width:375 }} description='暂无数据'/> : videoElements}
+                    <div className="HomeFooter">
+                        <div className="HomeFooter-goTop" onClick={backtop}>
+                            <i className="HomeFooter-goTopIcon"></i>
+                            <span className="HomeFooter-goTopText">返回顶部</span>
+                        </div>
+                        <div className="HomeFooter-officialDescription">
+                            <p className="HomeFooter-officialDescriptionText">客服热线：027-87750710</p>
+                            <p className="HomeFooter-officialDescriptionText">武汉斗鱼网络科技有限公司</p>
+                            <p className="HomeFooter-officialDescriptionText">湖北省武汉市东湖开发区光谷软件园F4栋8楼</p>
+                            <p className="HomeFooter-officialDescriptionText">版权所有 © www.douyu.com 鄂ICP备15011961号-1</p>
+                        </div>
+                        <a className="DownloadBtn">打开斗鱼App，看更多精彩内容</a>
+                    </div>
                 </div>
             </ContentWrapper>
-        </HomeWrapper>
     )
 }
 
