@@ -29,17 +29,15 @@ const Header: React.FC<HeaderProps> = (props) => {
     loading,
     getListDataActionDispatch
   } = props
-  console.log(partitions)
+  // console.log(cate1Info,cate2Info)
   // console.log(cate2Info.slice(0,100))
   const PartitionsList = partitions.map((item) => {
     return (
-      <>
       <NavLink to={item.shortName} key={item.cate2Id}>
         {/* <Tabs.Tab title={item.name} key={item.cate2Id} className='tabs'> */}
           <span key={item.cate2Id }>{item.name}</span>
         {/* </Tabs.Tab> */}
       </NavLink>
-      </>
       )
   })
 
@@ -52,7 +50,7 @@ const Header: React.FC<HeaderProps> = (props) => {
         <li className='main' key={item.cate2Id}>
           {/* placeholder={<img width='100%' height='100%' src={video}/>} */}
           {/* <LazyLoad height={'100%'} offset={100}> */}
-            <div className='image'><img src={item.icon} alt="" /></div>
+          <div className='image'><img src={item.icon} alt="" /></div>
           {/* </LazyLoad> */}
           <div className='title'>{item.cate2Name}</div>
         </li>

@@ -31,7 +31,7 @@ export const getListAction = () => {
     return (dispatch: Dispatch) => {
         return getListRequest()
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 dispatch(setList(data.data.data))
             })
     }
