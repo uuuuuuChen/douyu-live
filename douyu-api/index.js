@@ -6,6 +6,7 @@ const partitionsRouter = require('./routes/partitions')
 const mixvideosRouter = require('./routes/mixvideos')
 const listRouter = require('./routes/list')
 const todaytopRouter = require('./routes/todaytop')
+const searchRouter = require('./routes/search')
 const transferRouter = require('./routes/transfer')
 
 
@@ -14,6 +15,7 @@ router.use('/cate',partitionsRouter)
 router.use('/cate',listRouter)
 router.use('/home',mixvideosRouter)
 router.use('/search',todaytopRouter)
+router.use('/search',searchRouter)
 router.use('/transfer',transferRouter)
 app.use(router.routes())
 

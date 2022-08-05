@@ -38,6 +38,13 @@ export const SearchWrapper = styled.div`
         color: #333;
         transform: translateY(-50%);
         }
+    .icon1 {
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        margin-left: 20px;
+        background-color: #fff;
+    }
     }
     .SearchHot {
         width: 100%;
@@ -72,7 +79,7 @@ export const SearchWrapper = styled.div`
         width: 100%;
         height: 44px;
     }
-    .icon {
+    .icon2 {
         border: 1px solid transparent;
         background-color: #f8f8f8;
         display: block;
@@ -94,4 +101,68 @@ export const SearchWrapper = styled.div`
         text-overflow: ellipsis;
         white-space: nowrap;
     }
+`
+
+export const Container = styled.div`
+    position: fixed;
+    top: ${px2rem(44)};
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+    overflow: hidden;
+    background: #fff;
+    transform-origin: right bottom;
+    /* CSSTransition 过渡类型给children */
+    &.fly-enter,&.fly-appear {
+        opacity: 0;
+        /* 启用GPU加速 */
+        transform: translate3d(100%, 0, 0);
+    }
+    &.fly-enter-active,&.fly-apply-active {
+        opacity: 1;
+        transition: all .3s;
+        transform: translate3d(0, 0, 0);
+    }
+    &.fly-exit {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+    &.fly-exit-active {
+        opacity: 0;
+        transition: all .3s;
+        transform: translate3d(100%, 0, 0);
+    }
+    .list {
+        /* display: flex;
+        flex-direction: row; */
+        /* justify-content: space-around; */
+        position: relative;
+        img {
+            /* width: 100%; */
+            display: inline-block;
+            height: 50px;
+            /* border-bottom: 1px solid rgb(206, 204, 204); */
+            font-size: 18px;
+            line-height: 50px;
+            text-indent: 10px;
+        }
+        span {
+            margin-left: 0.5rem;
+            line-height: 2.5rem;
+            font-size: 0.6rem;
+        }
+        & .icon1 {
+            line-height: 2.5rem;
+            position: absolute;
+            /* float: right; */
+            top: 0;
+            right: 1rem;
+            color: rgb(255,207,47);
+            height: 0.6rem;
+            /* background-color: black; */
+            /* border-radius: 50%; */
+        }
+}
 `

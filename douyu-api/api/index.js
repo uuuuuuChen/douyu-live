@@ -4,6 +4,7 @@ const URL_PARTITIONS = 'https://m.douyu.com/api/cate/recList'
 const URL_MIXVIDEOS = 'https://m.douyu.com/api/home/mix'
 const URL_LIST = 'https://m.douyu.com/api/cate/list'
 const URL_TODAYTOP = 'https://m.douyu.com/api/search/getTodayTop'
+const URL_SEARCHLIST = 'https://m.douyu.com/api/room/list'
 
 const fetchPartitions = () => {
     const params = [
@@ -12,6 +13,16 @@ const fetchPartitions = () => {
     ]
     // console.log(URL_PARTITIONS + '?' + params.join("&"));
     return fetch(URL_PARTITIONS + '?' + params.join("&"))
+        .then(res => res.json())
+        .then(data => data)
+}
+const fetchSearchList = (key) => {
+    const params = [
+        `page=${key}`,
+        `type=`
+    ]
+    // console.log(URL_PARTITIONS + '?' + params.join("&"));
+    return fetch(URL_SEARCHLIST + '?' + params.join("&"))
         .then(res => res.json())
         .then(data => data)
 }
@@ -42,5 +53,6 @@ module.exports = {
     fetchPartitions,
     fetchMixVideos,
     fetchList,
-    fetchTodayTop
+    fetchTodayTop,
+    fetchSearchList
 }

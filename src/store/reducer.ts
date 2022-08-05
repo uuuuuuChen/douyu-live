@@ -2,15 +2,21 @@ import { AnyAction, combineReducers } from "redux"
 import * as actionTypes from './action-types'
 
 const initialState = {
-    partitions: [],
-    cate1Info: [],
-    cate2Info: [],
-    mixvideos: [{}],
-    todaytop: [],
-    loading: true
+    home: {
+        partitions: [],
+        cate1Info: [],
+        cate2Info: [],
+        mixvideos: [{}],
+        todaytop: [],
+        loading: true,
+    },
+    search: {
+        searchresult: [{}]
+    }
+    
 }
 
-export const partitionsReducer = (state = initialState, action:AnyAction) => {
+export const partitionsReducer = (state = initialState.home, action:AnyAction) => {
     switch (action.type) {
         case actionTypes.SET_PARTITIONS:
             return {
@@ -25,7 +31,7 @@ export const partitionsReducer = (state = initialState, action:AnyAction) => {
                 arr.push(...action.data[i].list)
             }
             // let lolvideos = action.data[1].list
-            // console.log(action.data)
+            // console.log(arr)
             return {
                 ...state,
                 mixvideos: arr
@@ -58,7 +64,7 @@ export const partitionsReducer = (state = initialState, action:AnyAction) => {
     }
 }
 
-const mixvideosReducer = (state = initialState.mixvideos, action: AnyAction) => {
+const mixvideosReducer = (state = initialState.home.mixvideos, action: AnyAction) => {
     switch (action.type) {
         case actionTypes.SET_MIXVIDEOS:
             return {
@@ -84,7 +90,7 @@ const mixvideosReducer = (state = initialState.mixvideos, action: AnyAction) => 
 //     }
 // }
 
-const todaytopReducer = (state = initialState.todaytop, action: AnyAction) => {
+const todaytopReducer = (state = initialState.home.todaytop, action: AnyAction) => {
     switch (action.type) {
         case actionTypes.SET_TODAYTOP:
             return {
@@ -97,7 +103,7 @@ const todaytopReducer = (state = initialState.todaytop, action: AnyAction) => {
     }
 }
 
-const loadingReducer = (state = initialState.loading, action: AnyAction) => {
+const loadingReducer = (state = initialState.home.loading, action: AnyAction) => {
     switch (action.type) {
         case actionTypes.SET_LOADING: {
             return action.data
@@ -107,8 +113,22 @@ const loadingReducer = (state = initialState.loading, action: AnyAction) => {
     }
 }
 
+const SearchReducer = (state = initialState.search, action: AnyAction) => {
+    switch (action.type) {
+        case actionTypes.SET_SEARCH_RESULT: {
+            return {
+                ...state,
+                searchresult: action.data
+            }
+        }
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
     homedata: partitionsReducer,
+    searchdata: SearchReducer
     // mixvideos:mixvideosReducer,
     // list: listReducer,
     // todaytop: todaytopReducer,

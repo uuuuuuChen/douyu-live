@@ -8,3 +8,5 @@ export const SET_MIXVIDEOS = 'SET_MIXVIDEOS'
 export const SET_LOADING = 'SET_LOADING'
 // 今日top10
 export const SET_TODAYTOP = 'SET_TODAYTOP'
+// 搜索结果
+export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT'

@@ -32,7 +32,7 @@ const Home: React.FC<HomeProps> = (props) => {
     } = props
     // const res = Object.keys(mixvideos[0].list)
     // const res1 = mixvideos[0][list]
-    // console.log(mixvideos)
+    console.log(mixvideos)
     const {
         getHomeDataActionDispatch,
         getListDataActionDispatch

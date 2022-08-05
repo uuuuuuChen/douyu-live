@@ -4,7 +4,8 @@ import {
     URL_PARTITION,
     URL_LIST,
     URL_MIXVIDEOS,
-    URL_TODAYTOP
+    URL_TODAYTOP,
+    URL_SEARCHRESULT
 } from './url'
 
 // export const getPartitonsRequest = ():Promise<any[]> => {
@@ -23,3 +24,6 @@ export const getPartitionsRequest = () => axiosInstance.get(URL_PARTITION)
 export const getListRequest = () => axiosInstance.get(URL_LIST)
 export const getMixvideosRequest = () => axiosInstance.get(URL_MIXVIDEOS)
 export const getTodaytopRequest = () => axiosInstance.get(URL_TODAYTOP)
+export const getSearchResultRequest = 
+    (query:any,page:number) => axiosInstance.get(
+        `${URL_SEARCHRESULT}?page=${page}&type=&keyword=${query}`)
