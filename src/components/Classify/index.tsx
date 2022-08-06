@@ -16,6 +16,8 @@ const Classify:React.FC<ClassifyProps> = (props) => {
     loading
   } = props
   
+  const displayStyle = loading ? 'none' : ''
+
   return (
     <ClassifyWrapper>
       <div className="header">
@@ -32,7 +34,8 @@ const Classify:React.FC<ClassifyProps> = (props) => {
           '--title-font-size': '14px',
           '--active-title-color': 'var(--adm-color-warning)'
         }}>
-          <Tabs.Tab key='home1' title='全部' className='tabs'></Tabs.Tab>
+        {loading ? '' : <Tabs.Tab key='home1' title='全部' className='tabs'/>}
+        {/* </Tabs.Tab> */}
             {NavList}
         </Tabs>
         </div>

@@ -1,25 +1,23 @@
 const router = require('koa-router')()
-const Data1 = require('../data/SearchData1')
-const Data2 = require('../data/SearchData2')
 const {
-    fetchSearchList
+    fetchWZList
 } = require('../api')
 
-router.get('/result', async (ctx, next) => {
+router.get('/wzry', async (ctx, next) => {
     const w = encodeURI(ctx.query.page)
     try {
-        const searchdata = await fetchSearchList(w)
-        const searchdata1 = await fetchSearchList(2)
-        const searchdata2 = await fetchSearchList(3)
-        const searchdata3 = await fetchSearchList(4)
-        const searchdata4 = await fetchSearchList(5)
-        const searchdata5 = await fetchSearchList(6)
-        const searchdata6 = await fetchSearchList(7)
-        const searchdata7 = await fetchSearchList(8)
-        const searchdata8 = await fetchSearchList(9)
-        const searchdata9 = await fetchSearchList(10)
-        const searchdata10 = await fetchSearchList(11)
-        const searchdata11 = await fetchSearchList(12)
+        const searchdata = await fetchWZList(w)
+        const searchdata1 = await fetchWZList(2)
+        const searchdata2 = await fetchWZList(3)
+        const searchdata3 = await fetchWZList(4)
+        const searchdata4 = await fetchWZList(5)
+        const searchdata5 = await fetchWZList(6)
+        const searchdata6 = await fetchWZList(7)
+        const searchdata7 = await fetchWZList(8)
+        const searchdata8 = await fetchWZList(9)
+        const searchdata9 = await fetchWZList(10)
+        const searchdata10 = await fetchWZList(11)
+        const searchdata11 = await fetchWZList(12)
         const data = [
             ...searchdata1.data.list,
             ...searchdata2.data.list,

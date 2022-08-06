@@ -1,25 +1,23 @@
 const router = require('koa-router')()
-const Data1 = require('../data/SearchData1')
-const Data2 = require('../data/SearchData2')
 const {
-    fetchSearchList
+    fetchYZList
 } = require('../api')
 
-router.get('/result', async (ctx, next) => {
+router.get('/yz', async (ctx, next) => {
     const w = encodeURI(ctx.query.page)
     try {
-        const searchdata = await fetchSearchList(w)
-        const searchdata1 = await fetchSearchList(2)
-        const searchdata2 = await fetchSearchList(3)
-        const searchdata3 = await fetchSearchList(4)
-        const searchdata4 = await fetchSearchList(5)
-        const searchdata5 = await fetchSearchList(6)
-        const searchdata6 = await fetchSearchList(7)
-        const searchdata7 = await fetchSearchList(8)
-        const searchdata8 = await fetchSearchList(9)
-        const searchdata9 = await fetchSearchList(10)
-        const searchdata10 = await fetchSearchList(11)
-        const searchdata11 = await fetchSearchList(12)
+        const searchdata = await fetchYZList(w)
+        const searchdata1 = await fetchYZList(2)
+        const searchdata2 = await fetchYZList(3)
+        const searchdata3 = await fetchYZList(4)
+        const searchdata4 = await fetchYZList(5)
+        const searchdata5 = await fetchYZList(6)
+        const searchdata6 = await fetchYZList(7)
+        const searchdata7 = await fetchYZList(8)
+        const searchdata8 = await fetchYZList(9)
+        const searchdata9 = await fetchYZList(10)
+        const searchdata10 = await fetchYZList(11)
+        const searchdata11 = await fetchYZList(12)
         const data = [
             ...searchdata1.data.list,
             ...searchdata2.data.list,

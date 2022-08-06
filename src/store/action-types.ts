@@ -14,3 +14,11 @@ export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT'
 export const SET_SEARCH_LIST = 'SET_SEARCH_LIST'
 // 主播列表
 export const SET_ANCHOR = 'SET_ANCHOR'
+// 颜值分区
+export const SET_YZ_RESULT = 'SET_YZ_RESULT'
+// 英雄联盟分区
+export const SET_LOL_RESULT = 'SET_LOL_RESULT'
+// 王者荣耀分区
+export const SET_WZ_RESULT = 'SET_WZ_RESULT'
+// 热门游戏分区
+export const SET_HOT_RESULT = 'SET_HOT_RESULT'

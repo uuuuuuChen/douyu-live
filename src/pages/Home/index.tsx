@@ -32,7 +32,7 @@ const Home: React.FC<HomeProps> = (props) => {
     } = props
     // const res = Object.keys(mixvideos[0].list)
     // const res1 = mixvideos[0][list]
-    // console.log(mixvideos)
+    console.log(mixvideos)
     const {
         getHomeDataActionDispatch,
         getListDataActionDispatch
@@ -51,7 +51,7 @@ const Home: React.FC<HomeProps> = (props) => {
             </div>
         </div>
     )
-    
+
     // const arr = new Array(11)
     // mixvideos.map(() => {
     //     for (let i = 0; i< arr.length; i++) {
@@ -74,32 +74,35 @@ const Home: React.FC<HomeProps> = (props) => {
             )
         }
     )
-    
-    const backtop =() => {
+    const backtop = () => {
         console.log(666)
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }
-        
+    const footerElements = (
+        <div className="HomeFooter">
+            <div className="HomeFooter-goTop" onClick={backtop}>
+                <i className="HomeFooter-goTopIcon"></i>
+                <span className="HomeFooter-goTopText">返回顶部</span>
+            </div>
+            <div className="HomeFooter-officialDescription">
+                <p className="HomeFooter-officialDescriptionText">客服热线：027-87750710</p>
+                <p className="HomeFooter-officialDescriptionText">武汉斗鱼网络科技有限公司</p>
+                <p className="HomeFooter-officialDescriptionText">湖北省武汉市东湖开发区光谷软件园F4栋8楼</p>
+                <p className="HomeFooter-officialDescriptionText">版权所有 © www.douyu.com 鄂ICP备15011961号-1</p>
+            </div>
+            <a className="DownloadBtn">打开斗鱼App，看更多精彩内容</a>
+        </div>
+    )
+
+
     return (
-            <ContentWrapper>
-                <div className="video-list clear">
-                    { loading ? '' : renderTitle}
-                    { loading ? <Empty style={{ padding: '64px 0' }} imageStyle={{ width:375 }} description='暂无数据'/> : videoElements}
-                    <div className="HomeFooter">
-                        <div className="HomeFooter-goTop" onClick={backtop}>
-                            <i className="HomeFooter-goTopIcon"></i>
-                            <span className="HomeFooter-goTopText">返回顶部</span>
-                        </div>
-                        <div className="HomeFooter-officialDescription">
-                            <p className="HomeFooter-officialDescriptionText">客服热线：027-87750710</p>
-                            <p className="HomeFooter-officialDescriptionText">武汉斗鱼网络科技有限公司</p>
-                            <p className="HomeFooter-officialDescriptionText">湖北省武汉市东湖开发区光谷软件园F4栋8楼</p>
-                            <p className="HomeFooter-officialDescriptionText">版权所有 © www.douyu.com 鄂ICP备15011961号-1</p>
-                        </div>
-                        <a className="DownloadBtn">打开斗鱼App，看更多精彩内容</a>
-                    </div>
-                </div>
-            </ContentWrapper>
+        <ContentWrapper>
+            <div className="video-list clear">
+                {loading ? '' : renderTitle}
+                {loading ? <Empty style={{ padding: '64px 0' }} imageStyle={{ width: 375 }} description='暂无数据' /> : videoElements}
+                {footerElements}
+            </div>
+        </ContentWrapper>
     )
 }
 

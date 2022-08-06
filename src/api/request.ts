@@ -5,7 +5,11 @@ import {
     URL_LIST,
     URL_MIXVIDEOS,
     URL_TODAYTOP,
-    URL_SEARCHRESULT
+    URL_SEARCHRESULT,
+    URL_YZLIST,
+    URL_LOLLIST,
+    URL_WZLIST,
+    URL_HOTLIST
 } from './url'
 
 // export const getPartitonsRequest = ():Promise<any[]> => {
@@ -31,3 +35,19 @@ export const getSearchResultRequest =
 export const getSearchListRequest = 
     (page:number) => axiosInstance.get(
         `${URL_SEARCHRESULT}?page=${page}&type=`)
+
+export const getYZListRequest = 
+        () => axiosInstance.get(
+            `${URL_YZLIST}?page=1&type=`)
+
+export const getLOLListRequest = 
+        () => axiosInstance.get(
+            `${URL_LOLLIST}?page=1&type=`)
+
+export const getWZListRequest = 
+            () => axiosInstance.get(
+                `${URL_WZLIST}?page=1&type=`)
+    
+export const getHOTListRequest = 
+                () => axiosInstance.get(
+                    `${URL_HOTLIST}?page=1&type=`)

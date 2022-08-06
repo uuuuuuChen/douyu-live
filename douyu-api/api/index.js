@@ -49,10 +49,58 @@ const fetchTodayTop = () => {
         .then(data => data)
 }
 
+const fetchYZList = (key) => {
+    const params = [
+        `page=${key}`,
+        `type=yz`
+    ]
+    // console.log(URL_PARTITIONS + '?' + params.join("&"));
+    return fetch(URL_SEARCHLIST + '?' + params.join("&"))
+        .then(res => res.json())
+        .then(data => data)
+}
+
+const fetchLOLList = (key) => {
+    const params = [
+        `page=${key}`,
+        `type=LOL`
+    ]
+    // console.log(URL_PARTITIONS + '?' + params.join("&"));
+    return fetch(URL_SEARCHLIST + '?' + params.join("&"))
+        .then(res => res.json())
+        .then(data => data)
+}
+
+const fetchWZList = (key) => {
+    const params = [
+        `page=${key}`,
+        `type=wzry`
+    ]
+    // console.log(URL_PARTITIONS + '?' + params.join("&"));
+    return fetch(URL_SEARCHLIST + '?' + params.join("&"))
+        .then(res => res.json())
+        .then(data => data)
+}
+
+const fetchHotList = (key) => {
+    const params = [
+        `page=${key}`,
+        `type=rmyx`
+    ]
+    // console.log(URL_PARTITIONS + '?' + params.join("&"));
+    return fetch(URL_SEARCHLIST + '?' + params.join("&"))
+        .then(res => res.json())
+        .then(data => data)
+}
+
 module.exports = {
     fetchPartitions,
     fetchMixVideos,
     fetchList,
     fetchTodayTop,
-    fetchSearchList
+    fetchSearchList,
+    fetchYZList,
+    fetchLOLList,
+    fetchWZList,
+    fetchHotList
 }

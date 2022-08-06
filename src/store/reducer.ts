@@ -8,6 +8,10 @@ const initialState = {
         cate2Info: [],
         mixvideos: [{}],
         todaytop: [],
+        yzlist:[{}],
+        lollist:[{}],
+        wzlist:[{}],
+        hotlist:[{}],
         loading: true,
     },
     search: {
@@ -53,6 +57,31 @@ export const partitionsReducer = (state = initialState.home, action: AnyAction) 
             return {
                 ...state,
                 todaytop: action.data
+            }
+            break
+        case actionTypes.SET_YZ_RESULT:
+            return {
+                ...state,
+                yzlist: action.data
+            }
+            break
+        case actionTypes.SET_LOL_RESULT:
+            return {
+                ...state,
+                lollist: action.data
+            }
+            break
+        case actionTypes.SET_WZ_RESULT:
+            return {
+                ...state,
+                wzlist: action.data
+            }
+            break
+        case actionTypes.SET_HOT_RESULT:
+            console.log(666)
+            return {
+                ...state,
+                hotlist: action.data
             }
             break
         case actionTypes.SET_LOADING:

@@ -1,4 +1,4 @@
-import React, { memo,useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import { Empty } from 'antd-mobile'
 import VideoItem from '@/components/VideoItem'
 import { connect } from 'react-redux'
@@ -9,15 +9,15 @@ import {
 import {
   ContentWrapper
 } from './style'
-interface LOLProps {
-  lollist: any[],
+interface WZProps {
+  wzlist: any[],
   getHomeDataActionDispatch: () => void,
   loading: boolean,
 }
 
-const LOL:React.FC<LOLProps> = (props) => {
+const WZ:React.FC<WZProps> = (props) => {
   const {
-    lollist,
+    wzlist,
     loading
   } = props
   // console.log(lollist)
@@ -33,9 +33,9 @@ const LOL:React.FC<LOLProps> = (props) => {
     window.scrollTo(0, 0);
   }
   const renderTitle = (
-    <div className="ListPage-contentTitle">英雄联盟</div>
+    <div className="ListPage-contentTitle">王者荣耀</div>
 )
-  const videoElements = lollist.map(
+  const videoElements = wzlist.map(
     (video: any) => {
         return (
             <VideoItem
@@ -73,7 +73,7 @@ const LOL:React.FC<LOLProps> = (props) => {
 }
 
 const mapStateToProps = (state: rootState) => ({
-  lollist: state.homedata.lollist,
+  wzlist: state.homedata.lollist,
   loading: state.homedata.loading
 })
 
@@ -83,4 +83,4 @@ const mapDispatchToProps = (dispatch: any) => ({
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(memo(LOL))
+export default connect(mapStateToProps, mapDispatchToProps)(memo(WZ))
