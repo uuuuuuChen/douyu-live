@@ -11,12 +11,14 @@ const initialState = {
         loading: true,
     },
     search: {
-        searchresult: [{}]
+        searchresult: [{}],
+        searchlist: [{}],
+        anchor: [{}]
     }
-    
+
 }
 
-export const partitionsReducer = (state = initialState.home, action:AnyAction) => {
+export const partitionsReducer = (state = initialState.home, action: AnyAction) => {
     switch (action.type) {
         case actionTypes.SET_PARTITIONS:
             return {
@@ -27,7 +29,7 @@ export const partitionsReducer = (state = initialState.home, action:AnyAction) =
         case actionTypes.SET_MIXVIDEOS:
             let len = action.data.length
             let arr = []
-            for(let i = 0; i < len; i++) {
+            for (let i = 0; i < len; i++) {
                 arr.push(...action.data[i].list)
             }
             // let lolvideos = action.data[1].list
@@ -53,7 +55,7 @@ export const partitionsReducer = (state = initialState.home, action:AnyAction) =
                 todaytop: action.data
             }
             break
-        case actionTypes.SET_LOADING: 
+        case actionTypes.SET_LOADING:
             return {
                 ...state,
                 loading: action.data
@@ -116,9 +118,45 @@ const loadingReducer = (state = initialState.home.loading, action: AnyAction) =>
 const SearchReducer = (state = initialState.search, action: AnyAction) => {
     switch (action.type) {
         case actionTypes.SET_SEARCH_RESULT: {
+            // console.log(action.data,state.searchlist[0].nickname)
+            var res:any = []
+            state.searchlist.map(
+                (todo, index) => {
+                    let nickname = state.searchlist[index].nickname
+                    let roomname = state.searchlist[index].roomName
+                    // console.log(typeof nickname,roomname)
+                    if(nickname.includes(action.data) || roomname.includes(action.data) ) {
+                        res.push(todo)
+                    }
+                }
+            )
+            // console.log(res)
             return {
                 ...state,
-                searchresult: action.data
+                searchresult: res
+            }
+        }
+        case actionTypes.SET_ANCHOR: {
+            var res1:any = []
+            state.searchlist.map(
+                (todo, index) => {
+                    let nickname = state.searchlist[index].nickname
+                    // console.log(typeof nickname,roomname)
+                    if(nickname.includes(action.data) ) {
+                        res1.push(todo)
+                    }
+                }
+            )
+            // console.log(res)
+            return {
+                ...state,
+                anchor: res1
+            }
+        }
+        case actionTypes.SET_SEARCH_LIST: {
+            return {
+                ...state,
+                searchlist: action.data
             }
         }
         default:

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef,useMemo } from 'react'
+import React, { useEffect, useState, useRef, useMemo } from 'react'
 import { SearchWrapper, Container } from './style'
 import { connect } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -9,25 +9,35 @@ import { CSSTransition } from 'react-transition-group'
 import { rootState } from '@/store'
 import {
   getHomeDataAction,
-  getSearchResultAction
+  getSearchResultAction,
+  getSearchListAction,
+  getAnchorAction
 } from '@/store/actionCreators'
 
 interface SearchProps {
   todaytop: any[],
   searchresult: any[],
+  searchlist: any[],
+  anchor: any[],
   getHomeDataActionDispatch: () => void,
-  getSearchResultDispatch: (query:any,page:number) => void,
+  getSearchResultDispatch: (query: string) => void,
+  getAnchorListDispatch: (query: string) => void,
+  getSearchListDispatch: (page: number) => void,
   loading: boolean,
 }
 
 const Search: React.FC<SearchProps> = (props) => {
-  const { 
-    todaytop, 
-    searchresult
+  const {
+    todaytop,
+    searchresult,
+    searchlist,
+    anchor
   } = props
-  const { 
-    getHomeDataActionDispatch, 
-    getSearchResultDispatch 
+  const {
+    getHomeDataActionDispatch,
+    getSearchResultDispatch,
+    getSearchListDispatch,
+    getAnchorListDispatch
   } = props
   const [value, setValue] = useState('')
   const [query, setQuery] = useState('');
@@ -38,36 +48,39 @@ const Search: React.FC<SearchProps> = (props) => {
   const gotoHome = () => {
     navigate('/')
   }
-  console.log(searchresult)
+  // console.log(searchlist)
 
-  const onSetQuery = (query:any) => {
+  const onSetQuery = (query: any) => {
     setQuery(query)
-}
-// useMemo 可以缓存上一次函数计算的结果
+  }
+  // useMemo 可以缓存上一次函数计算的结果
   let onSetQueryDebounce = useMemo(() => {
-      return debounce(onSetQuery, 500)
+    return debounce(onSetQuery, 500)
   }, [onSetQuery])
 
   useEffect(() => {
     // query更新
     onSetQueryDebounce(query)
-  }, [value])
+  }, [query])
 
   useEffect(() => {
     queryRef.current?.focus()
     getHomeDataActionDispatch()
+    getSearchListDispatch(page)
   }, [])
 
-  const onAdd = (value:any) => {
+  const onAdd = (value: any) => {
+    // console.log(value)
     onSetQuery(value)
     setShow(true)
- }
+  }
 
- useEffect(() => {
-  // if(query.trim()){
-    getSearchResultDispatch(query,page)  
-// } 
-}, [query])
+  useEffect(() => {
+    if (query.trim()) {
+      getSearchResultDispatch(query)
+      getAnchorListDispatch(query)
+    }
+  }, [query])
   // console.log(query)
 
   const renderTop5 = todaytop.slice(0, 5).map((item, index) => {
@@ -87,16 +100,32 @@ const Search: React.FC<SearchProps> = (props) => {
     )
   })
 
+  const renderAnchor = anchor.map((item) => {
+    // let isLive = {item.isLive}
+    // let styled =  isLive == 1 ? '' : none
+    return (
+      <div className="SearchResultAllAnchor-showItem" key={Math.random()*10000}>
+        <div className="SearchResultAllAnchor-showItemAnchor" key={Math.random()*10000}>
+          <img src={item.avatar} alt="" />
+          <div className="SearchResultAllAnchor-showItemLive"></div>
+        </div>
+        <div className="SearchResultAllAnchor-showItemNickname" key={Math.random()*10000}>
+          {item.nickName}
+        </div>
+      </div>
+    )
+})
+
   const videoElements = searchresult.map(
     (video: any) => {
-        return (
-            <VideoItem
-                video={video}
-                key={Math.random() * 100000}
-                showStatistics={true} />
-        )
+      return (
+        <VideoItem
+          video={video}
+          key={Math.random() * 100000}
+          showStatistics={true} />
+      )
     }
-)
+  )
 
   return (
     <SearchWrapper>
@@ -110,17 +139,20 @@ const Search: React.FC<SearchProps> = (props) => {
           value={value}
           onChange={e => {
             setValue(e.target.value)
+            // onAdd(e.target.value)
             if (e.target.value == '' || !e.target.value) {
               setShow(!show)
               // queryRef.current.focus()
               queryRef.current?.focus()
               // onAdd()
             }
-            console.log(e.target.value,6666)
+            // console.log(e.target.value,6666)
           }}
           onKeyDown={e => {
-            setValue(e.target.value)
-            onAdd(e.target.value)
+            if (e.keyCode == 13) {
+              setValue(e.target.value)
+              onAdd(e.target.value)
+            }
           }}
         />
         <div className="search">
@@ -139,23 +171,59 @@ const Search: React.FC<SearchProps> = (props) => {
             </div>
           </div>
         </div>
-        { query && <CSSTransition
-                    in={show}   // 控制动画开启关闭
-                    timeout={1000}  // 为动画执行时间
-                    appear={true}  // 是否第一次加载该组件时启用相应的动画渲染
-                    classNames="fly"
-                    unmountOnExit  // 当动画效果为隐藏时，该标签会从dom树上移除，类似js操作
-                    onExit={() => {  // 出场动画时触发
-                        navigate(-1)
-                }}
-                >  
-                    <Container>
-                       {videoElements}
-                    </Container> 
-                </CSSTransition>
-                }
-      </div>
 
+        {query && <CSSTransition
+          in={show}   // 控制动画开启关闭
+          timeout={1000}  // 为动画执行时间
+          appear={true}  // 是否第一次加载该组件时启用相应的动画渲染
+          classNames="fly"
+          unmountOnExit  // 当动画效果为隐藏时，该标签会从dom树上移除，类似js操作
+        //     onExit={() => {  // 出场动画时触发
+        //         navigate(-1)
+        // }}
+        >
+          <Container>
+            <div className="SearchResult">
+              <div className="SearchResult-header">
+                <div className="SearchResult-headerNavItem select">搜索结果如下</div>
+                {/* <div className="SearchResult-headerNavItem">主播</div>
+                      <div className="SearchResult-headerNavItem">直播</div>
+                      <div className="SearchResult-headerNavItem">视频</div> */}
+              </div>
+              <div className="SearchResult-content">
+              <div className="SearchResultAllAnchor">
+                <div className="SearchResultAllLive">
+                  <h2 className="SearchResultAllLive-title">
+                    <span className="SearchResultAllLive-titleIcon"></span>
+                    <span className="SearchResultAllLive-titleName">主播</span>
+                    <div className="SearchResultAllLive-titleMore">更多</div>
+                  </h2>
+                  <div />
+                  <div className="SearchResultAllLive-content">
+                    <div className="SearchResultAllAnchor-show" >
+                      {renderAnchor}
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <div className="SearchResultAllLive">
+                  <h2 className="SearchResultAllLive-title">
+                    <span className="SearchResultAllLive-titleIcon"></span>
+                    <span className="SearchResultAllLive-titleName">直播</span>
+                    <div className="SearchResultAllLive-titleMore">更多</div>
+                  </h2>
+                  <div />
+                  <div className="SearchResultAllLive-content">
+                    {videoElements}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </CSSTransition>
+        }
+
+      </div>
     </SearchWrapper>
   )
 }
@@ -163,15 +231,23 @@ const Search: React.FC<SearchProps> = (props) => {
 const mapStateToProps = (state: rootState) => ({
   todaytop: state.homedata.todaytop,
   loading: state.homedata.loading,
-  searchresult: state.searchdata.searchresult
+  searchresult: state.searchdata.searchresult,
+  searchlist: state.searchdata.searchlist,
+  anchor: state.searchdata.anchor,
 })
 
 const mapDispatchToProps = (dispatch: any) => ({
   getHomeDataActionDispatch() {
     dispatch(getHomeDataAction())
   },
-  getSearchResultDispatch(query:any,page:number) {
-    dispatch(getSearchResultAction(query,page))
+  getSearchResultDispatch(query: string) {
+    dispatch(getSearchResultAction(query))
+  },
+  getSearchListDispatch(page: number) {
+    dispatch(getSearchListAction(page))
+  },
+  getAnchorListDispatch(query: string) {
+    dispatch(getAnchorAction(query))
   }
 })
 

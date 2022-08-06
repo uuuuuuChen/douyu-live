@@ -25,5 +25,9 @@ export const getListRequest = () => axiosInstance.get(URL_LIST)
 export const getMixvideosRequest = () => axiosInstance.get(URL_MIXVIDEOS)
 export const getTodaytopRequest = () => axiosInstance.get(URL_TODAYTOP)
 export const getSearchResultRequest = 
-    (query:any,page:number) => axiosInstance.get(
-        `${URL_SEARCHRESULT}?page=${page}&type=&keyword=${query}`)
+    (query:any) => axiosInstance.get(
+        `${URL_SEARCHRESULT}?page=1&type=&keyword=${query}`)
+
+export const getSearchListRequest = 
+    (page:number) => axiosInstance.get(
+        `${URL_SEARCHRESULT}?page=${page}&type=`)

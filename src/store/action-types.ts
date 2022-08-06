@@ -10,3 +10,7 @@ export const SET_LOADING = 'SET_LOADING'
 export const SET_TODAYTOP = 'SET_TODAYTOP'
 // 搜索结果
 export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT'
+// 搜索列表
+export const SET_SEARCH_LIST = 'SET_SEARCH_LIST'
+// 主播列表
+export const SET_ANCHOR = 'SET_ANCHOR'

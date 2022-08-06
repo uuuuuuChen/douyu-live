@@ -3,7 +3,8 @@ import {
     getListRequest,
     getMixvideosRequest,
     getTodaytopRequest,
-    getSearchResultRequest
+    getSearchResultRequest,
+    getSearchListRequest
 } from '@/api/request'
 import { AnyAction, Dispatch } from 'redux'
 import * as actionTypes from '../action-types'
@@ -37,13 +38,25 @@ export const getListAction = () => {
             })
     }
 }
-export const getSearchResultAction = (query:any[],page:number) => {
+
+export const getSearchListAction = (page:number) => {
     return (dispatch: Dispatch) => {
-        return getSearchResultRequest(query,page)
+        return getSearchListRequest(page)
             .then(data => {
                 // console.log(data)
-                dispatch(setSearchResult(data.data))
+                dispatch(setSearchList(data.data))
             })
+    }
+}
+export const getSearchResultAction = (query:string) => {
+    return (dispatch: Dispatch) => {
+        dispatch(setSearchResult(query))
+    }
+}
+
+export const getAnchorAction = (query:string) => {
+    return (dispatch: Dispatch) => {
+        dispatch(setAnchor(query))
     }
 }
 
@@ -55,6 +68,16 @@ export const setPartitions = (data: any[]): AnyAction => ({
 
 export const setSearchResult = (data: any): AnyAction => ({
     type: actionTypes.SET_SEARCH_RESULT,
+    data: data,
+})
+
+export const setAnchor = (data: any): AnyAction => ({
+    type: actionTypes.SET_ANCHOR,
+    data: data,
+})
+
+export const setSearchList = (data: any): AnyAction => ({
+    type: actionTypes.SET_SEARCH_LIST,
     data: data,
 })
 

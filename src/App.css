@@ -25,14 +25,12 @@
     position: absolute;
     top: 5rem;
     left: 0;
-    /* width: 100%; */
     height: calc(100vh -100px);
+    overflow-x: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     background: #fff; 
     padding-left: 0.25rem;
     padding-top: 0.5rem;
-    /* overflow: hidden;
-    clear: both; */
 }
 .content::-webkit-scrollbar{ display:none}
