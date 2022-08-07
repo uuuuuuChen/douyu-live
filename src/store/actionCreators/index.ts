@@ -51,7 +51,7 @@ export const getListAction = () => {
     }
 }
 export const getSearchListAction = (page:number) => {
-    return (dispatch: Dispatch) => {
+    return (dispatch: Dispatch<AnyAction>) => {
         return getSearchListRequest(page)
             .then(data => {
                 // console.log(data)

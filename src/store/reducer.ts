@@ -78,7 +78,7 @@ export const partitionsReducer = (state = initialState.home, action: AnyAction) 
             }
             break
         case actionTypes.SET_HOT_RESULT:
-            console.log(666)
+            // console.log(666)
             return {
                 ...state,
                 hotlist: action.data

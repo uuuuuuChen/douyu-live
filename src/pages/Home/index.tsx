@@ -32,7 +32,7 @@ const Home: React.FC<HomeProps> = (props) => {
     } = props
     // const res = Object.keys(mixvideos[0].list)
     // const res1 = mixvideos[0][list]
-    console.log(mixvideos)
+    // console.log(mixvideos)
     const {
         getHomeDataActionDispatch,
         getListDataActionDispatch
@@ -75,7 +75,7 @@ const Home: React.FC<HomeProps> = (props) => {
         }
     )
     const backtop = () => {
-        console.log(666)
+        // console.log(666)
         window.scrollTo(0, 0);
     }
     const footerElements = (
