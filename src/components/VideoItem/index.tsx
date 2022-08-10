@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Video } from '@/models/Video'
 import { VideoWrapper } from './style'
 import { Link } from 'react-router-dom'
@@ -64,4 +64,4 @@ const VideoItem: React.FC<VideoItemProps> = (props) => {
     )
 }
 
-export default VideoItem
+export default memo(VideoItem)

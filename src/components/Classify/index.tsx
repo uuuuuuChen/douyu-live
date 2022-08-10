@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { ClassifyWrapper } from './style'
 import { Tabs, DotLoading} from 'antd-mobile'
 interface ClassifyProps {
@@ -49,4 +49,4 @@ const Classify:React.FC<ClassifyProps> = (props) => {
   )
 }
 
-export default Classify
+export default memo(Classify)
