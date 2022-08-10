@@ -51,7 +51,7 @@ export const HeaderWrapper = styled.div`
             padding-left: ${px2rem(32.5)};
             font-size: ${px2rem(14)};
             color: #bbb;
-            line-height: 28px;
+            line-height: ${px2rem(28)};
             display: flex;
             flex: 1;
         }
@@ -68,7 +68,7 @@ export const HeaderWrapper = styled.div`
         align-items: center;
         .HomeNav-content { 
             /* box-sizing: border-box; */
-            padding-right: 45px;
+            padding-right: ${px2rem(45)};
             width: 100%;
             height: 100%;
             font-size: 0;
@@ -97,7 +97,7 @@ export const HeaderWrapper = styled.div`
                 height: 0.1rem;
                 /* font-size: 1.5rem; */
                 position: absolute;
-                bottom: -13px;
+                bottom: -${px2rem(13)};
                 left: 0;
                 right: 0;
                 margin-left: auto;
@@ -105,7 +105,7 @@ export const HeaderWrapper = styled.div`
             }      
             span {
                 /* width: 30px; */
-                margin: 0 11px;
+                margin: 0 ${px2rem(11)};
                 font-size: ${px2rem(14)};
                 display: inline-block;
                 vertical-align: middle;

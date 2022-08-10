@@ -2,6 +2,7 @@ import React from 'react'
 import { Video } from '@/models/Video'
 import { VideoWrapper } from './style'
 import { Link } from 'react-router-dom'
+import LazyLoad from 'react-lazyload'
 import videoImg from '@/assets/images/douyu.png'
 
 interface VideoItemProps {
@@ -27,17 +28,17 @@ const VideoItem: React.FC<VideoItemProps> = (props) => {
                                 {video.hn ? video.hn : ''}
                             </span>
                         </div>
+                        <LazyLoad placeholder={<img width='100%' height='100%' src={videoImg}/>}>
                         <img src={videoImg} alt="" className='tv' />
                         {
                             video.roomSrc && (
-                                // <LazyLoad placeholder={<img width='100%'
-                                //     height='100%' src={tv}/>}>
+                                
                                 <img src={video.roomSrc} className="pic" alt={video.cate2Name}
                                     onLoad={(e) => e.currentTarget.style.opacity = "1"}
                                 />
-                                // </LazyLoad>
                             )
                         }
+                       </LazyLoad>
                         <div className="cover">
                             {
                                 showStatistics && (

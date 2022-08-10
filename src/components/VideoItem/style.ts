@@ -17,31 +17,31 @@ export const VideoWrapper = styled.div`
             padding-bottom: 58%;  // 63
             .hotdu {
                 position: absolute;
-                top: -4px;
+                top: -${px2rem(4)};
                 left: 0;
                 z-index: 998;
                 box-sizing: border-box;
-                padding-right: 5px;
+                padding-right: ${px2rem(5)};
                 width: 100%;
-                height: 18px;
+                height: ${px2rem(18)};
                 background: url(https://shark2.douyucdn.cn/front-publish/m-douyu-v3-master/assets/images/bg-shadow_e60f214.png) no-repeat;
                 background-size: 100% 100%;
-                border-radius: 4px 4px 0 0;
+                border-radius: ${px2rem(4)} ${px2rem(4)} 0 0;
             }
             .iconhot {
-                margin-left: 115px;
+                margin-left: ${px2rem(115)};
                 /* display: block; */
-                margin-right: 3px;
-                width: 11px;
-                height: 11px;
-                font-size: 11px;
+                margin-right: ${px2rem(3)};
+                width: ${px2rem(11)};
+                height: ${px2rem(11)};
+                font-size: ${px2rem(11)};
                 font-weight: 700;
                 color: #fff;
                 }
             .barrage-count {
                     /* display: block; */
                     height: 100%;
-                    line-height: 18px;
+                    line-height: ${px2rem(18)};
                     font-size: 10px;
                     color: #fff;
                 }
@@ -98,13 +98,13 @@ export const VideoWrapper = styled.div`
                         vertical-align: middle;
                     }
                     .icon {
-                        font-size: 12px;
-                        padding: 0 5px;
+                        font-size: ${px2rem(12)};
+                        padding: 0 ${px2rem(5)};
                     }
                     .play-count{
-                        height: 18px;
-                        line-height: 18px;
-                        font-size: 10px;
+                        height: ${px2rem(18)};
+                        line-height: ${px2rem(18)};
+                        font-size: ${px2rem(10)};
                         color: #fff;
                         overflow: hidden;
                         -o-text-overflow: ellipsis;

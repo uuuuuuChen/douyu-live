@@ -5,19 +5,19 @@ export const ClassifyWrapper = styled.div`
     .header {
         position: relative;
         width: 100%;
-        height: 54px;
+        height: ${px2rem(54)};
         background: #fff;
     }
     .headerClose {
-        width: 26px;
-        height: 26px;
+        width: ${px2rem(26)};
+        height: ${px2rem(26)};
         position: absolute;
-        left: 10px;
+        left: ${px2rem(10)};
         top: 30%;
         vertical-align: middle;
         text-align: center;
         & .icon {
-            font-size: 22px;
+            font-size: ${px2rem(22)};
             font-weight: 500;
         }
     }
@@ -29,8 +29,8 @@ export const ClassifyWrapper = styled.div`
         width: 100%;
         text-align: center;
         /* padding-right: 26px; */
-        line-height: 54px;
-        font-size: 16px;
+        line-height: ${px2rem(54)};
+        font-size: ${px2rem(16)};
         color: #3f3f3f;
     }
     .tabs {
@@ -42,24 +42,24 @@ export const ClassifyWrapper = styled.div`
         }
     .nav {
         width: 100%;
-        height: 44px;
+        height: ${px2rem(44)};
     }
 
     .classifycontent {
         width: 100%;
-        height: 375px;
+        height: ${px2rem(375)};
         background-color: #f4f4f4;
         overflow-x: hidden;
         overflow-y: auto;
         & .classifyItem {
             width: 100%;
-            min-height: 375px;
+            min-height: ${px2rem(375)};
             /* overflow: hidden; */
             list-style: none;
             & .main {
                 position: relative;
                 width: 33.333333%;
-                height: 125px;
+                height: ${px2rem(125)};
                 box-sizing: border-box;
                 border-right: 1px dashed #ddd;
                 border-bottom: 1px dashed #ddd;
@@ -69,24 +69,24 @@ export const ClassifyWrapper = styled.div`
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%,-50%);
-                    width: 61px;
-                    height: 61px;
+                    width: ${px2rem(61)};
+                    height: ${px2rem(61)};
                     border-radius: 50%;
                 }
                 & img {
-                    width: 61px;
-                    height: 61px;
+                    width: ${px2rem(61)};
+                    height: ${px2rem(61)};
                     text-align: center;
                 }
                 & .title {
                     position: absolute;
                     left: 0;
-                    bottom: 13px;
+                    bottom: ${px2rem(13)};
                     width: 100%;
-                    height: 14px;
-                    line-height: 14px;
+                    height: ${px2rem(14)};
+                    line-height: ${px2rem(14)};
                     text-align: center;
-                    font-size: 12px;
+                    font-size: ${px2rem(12)};
                     color: #333;
                     overflow: hidden;
                     white-space: nowrap;

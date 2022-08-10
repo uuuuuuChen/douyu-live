@@ -117,7 +117,7 @@ export const Container = styled.div`
     }
     .SearchResult-content {
         position: absolute;
-        top: 40px;
+        top: ${px2rem(40)};
         left: 0;
         bottom: 0;
         width: 100%;
@@ -134,7 +134,7 @@ export const Container = styled.div`
         position: relative;
         box-sizing: border-box;
         width: 100%;
-        height: 40px;
+        height: ${px2rem(40)};
         background: #fff;
         border-bottom: 1px solid #eee;
     }
@@ -142,10 +142,10 @@ export const Container = styled.div`
         /* float: left; */
         height: 100%;
         /* text-align: center; */
-        line-height: 40px;
-        font-size: 14px;
+        line-height: ${px2rem(40)};
+        font-size: ${px2rem(14)};
         color: #333;
-        margin-right: 20px;
+        margin-right: ${px2rem(20)};
     }
     .SearchResultAllLive {
         width: 100%;
@@ -157,23 +157,23 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
         box-sizing: border-box;
-        padding-left: 5px;
+        padding-left: ${px2rem(5)};
         width: 100%;
-        height: 44px;
+        height: ${px2rem(44)};
     }
     .SearchResultAllLive-titleIcon {
         display: block;
-        margin-right: 10px;
-        width: 5px;
-        height: 18px;
+        margin-right: ${px2rem(10)};
+        width: ${px2rem(5)};
+        height: ${px2rem(18)};
         background: #ff6d00;
         border-radius: 2.5px;
     }
     .SearchResultAllLive-titleName {
         display: block;
-        height: 44px;
-        line-height: 44px;
-        font-size: 16px;
+        height: ${px2rem(44)};
+        line-height: ${px2rem(44)};
+        font-size: ${px2rem(16)};
         color: #333;
         font-weight: 400;
     }
@@ -181,10 +181,10 @@ export const Container = styled.div`
         position: absolute;
         top: 0;
         right: 5px;
-        padding-right: 18px;
+        padding-right: ${px2rem(18)};
         height: 100%;
-        line-height: 44px;
-        font-size: 13px;
+        line-height: ${px2rem(44)};
+        font-size: ${px2rem(13)};
         color: #999;
         font-weight: 400;
         background: url(https://shark2.douyucdn.cn/front-publish/m-douyu-v3-master/assets/images/icon-more_6c08756.png) no-repeat;
@@ -192,7 +192,7 @@ export const Container = styled.div`
         background-position: 100%;
     }
     .SearchResultAllAnchor {
-        margin-top: 10px;
+        margin-top: ${px2rem(10)};
         width: 100%;
         background: #fff;
     }
@@ -207,13 +207,13 @@ export const Container = styled.div`
         flex-direction: column;
         align-items: center;
         width: 25%;
-        height: 110px;
+        height: ${px2rem(110)};
         /* clear: both; */
     }
     .SearchResultAllAnchor-showItemAnchor {
         position: relative;
-        width: 70px;
-        height: 70px;
+        width: ${px2rem(70)};
+        height: ${px2rem(70)};
         border-radius: 4px;
         overflow: hidden;
         img {
@@ -225,11 +225,23 @@ export const Container = styled.div`
         position: absolute;
         left: 0;
         top: 0;
-        width: 56px;
-        height: 16px;
+        width: ${px2rem(56)};
+        height: ${px2rem(16)};
         background-image: url(https://shark2.douyucdn.cn/front-publish/m-douyu-v3-master/assets/images/playing_9f3b01a.png);
         background-repeat: no-repeat;
         background-size: 100% 100%;
+    }
+    .SearchResultAllAnchor-showItemNickname {
+        margin-top: 8px;
+        width: 100%;
+        line-height: 1.15;
+        text-align: center;
+        font-size: 12px;
+        color: #333;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     /* CSSTransition 过渡类型给children */

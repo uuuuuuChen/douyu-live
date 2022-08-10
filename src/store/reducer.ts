@@ -16,7 +16,7 @@ const initialState = {
     },
     search: {
         searchresult: [{}],
-        searchlist: [{}],
+        searchlist: [{nickname:'',roomName:''}],
         anchor: [{}]
     }
 

@@ -5,6 +5,8 @@ import { Link,NavLink } from 'react-router-dom'
 import Logo from '@/assets/images/logo.png'
 import Classify from '../Classify'
 import { connect } from 'react-redux'
+import LazyLoad from 'react-lazyload'
+import videoImg from '@/assets/images/douyu.png'
 import { rootState } from '@/store'
 import {
   getHomeDataAction,
@@ -45,11 +47,10 @@ const Header: React.FC<HeaderProps> = (props) => {
     return <Tabs.Tab title={item.cate1Name} key={item.cate1Id} className='tabs'></Tabs.Tab>
   }) 
 
-  const NavItemList = cate2Info.map((item) => {
+  const NavItemList = cate2Info.slice(0,30).map((item) => {
     return (
         <li className='main' key={item.cate2Id}>
-          {/* placeholder={<img width='100%' height='100%' src={video}/>} */}
-          {/* <LazyLoad height={'100%'} offset={100}> */}
+          {/* <LazyLoad placeholder={<img width='100%' height='100%' src={videoImg}/>}> */}
           <div className='image'><img src={item.icon} alt="" /></div>
           {/* </LazyLoad> */}
           <div className='title'>{item.cate2Name}</div>

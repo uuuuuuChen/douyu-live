@@ -2,7 +2,11 @@ const router = require('koa-router')()
 const Data1 = require('../data/SearchData1')
 const Data2 = require('../data/SearchData2')
 const {
-    fetchSearchList
+    fetchSearchList,
+    fetchYZList,
+    fetchLOLList,
+    fetchWZList,
+    fetchHotList
 } = require('../api')
 
 router.get('/result', async (ctx, next) => {
@@ -19,7 +23,12 @@ router.get('/result', async (ctx, next) => {
         const searchdata8 = await fetchSearchList(9)
         const searchdata9 = await fetchSearchList(10)
         const searchdata10 = await fetchSearchList(11)
-        const searchdata11 = await fetchSearchList(12)
+        const searchdata11 = await fetchYZList(4)
+        const searchdata12 = await fetchYZList(2)
+        const searchdata13 = await fetchYZList(3)
+        const searchdata14 = await fetchLOLList(4)
+        const searchdata15 = await fetchLOLList(2)
+        const searchdata16 = await fetchLOLList(3)
         const data = [
             ...searchdata1.data.list,
             ...searchdata2.data.list,
@@ -32,6 +41,11 @@ router.get('/result', async (ctx, next) => {
             ...searchdata9.data.list,
             ...searchdata10.data.list,
             ...searchdata11.data.list,
+            ...searchdata12.data.list,
+            ...searchdata13.data.list,
+            ...searchdata14.data.list,
+            ...searchdata15.data.list,
+            ...searchdata16.data.list,
             ...searchdata.data.list,
         ]
         // console.log(data)

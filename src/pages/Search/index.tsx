@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef, useMemo } from 'react'
 import { SearchWrapper, Container } from './style'
 import { connect } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { debounce } from '@/utils/utils'
+// import { debounce } from '@/utils/utils'
+import { debounce } from 'lodash'
 import VideoItem from '@/components/VideoItem'
 
 import { CSSTransition } from 'react-transition-group'
@@ -34,7 +35,7 @@ const Search: React.FC<SearchProps> = (props) => {
     anchor
   } = props
   const {
-    getHomeDataActionDispatch,
+    // getHomeDataActionDispatch,
     getSearchResultDispatch,
     getSearchListDispatch,
     getAnchorListDispatch
@@ -65,7 +66,7 @@ const Search: React.FC<SearchProps> = (props) => {
 
   useEffect(() => {
     queryRef.current?.focus()
-    getHomeDataActionDispatch()
+    // getHomeDataActionDispatch()
     getSearchListDispatch(page)
   }, [])
 
@@ -110,7 +111,7 @@ const Search: React.FC<SearchProps> = (props) => {
           <div className="SearchResultAllAnchor-showItemLive"></div>
         </div>
         <div className="SearchResultAllAnchor-showItemNickname" key={Math.random()*10000}>
-          {item.nickName}
+          {item.nickname}
         </div>
       </div>
     )
