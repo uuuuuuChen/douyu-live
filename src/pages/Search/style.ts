@@ -5,9 +5,14 @@ export const SearchWrapper = styled.div`
     z-index: 9999;
     height: 100vh;
     background-color: #fff;
+    overflow: hidden;
     /* overflow-y: scroll; */
     .search-header {
-        position: relative;
+        /* position: relative; */
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
         box-sizing: border-box;
         width: 100%;
         padding: 7px 60px 0 10px;
@@ -131,7 +136,10 @@ export const Container = styled.div`
         box-sizing: border-box;
     }
     .SearchResult-header {
-        position: relative;
+        /* position: relative; */
+        position: fixed;
+        top: 2.2rem;
+        z-index: 9999;
         box-sizing: border-box;
         width: 100%;
         height: ${px2rem(40)};
@@ -146,6 +154,7 @@ export const Container = styled.div`
         font-size: ${px2rem(14)};
         color: #333;
         margin-right: ${px2rem(20)};
+        margin-left: ${px2rem(20)};
     }
     .SearchResultAllLive {
         width: 100%;
