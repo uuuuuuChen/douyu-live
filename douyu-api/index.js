@@ -27,9 +27,9 @@ router.use('/search',searchRouter)
 router.use('/transfer',transferRouter)
 app.use(router.routes())
 
-app.use((ctx) => {
-    ctx.body = '后端运行成功(前面的路由有问题！！)'
-})
+// app.use((ctx) => {
+//     ctx.body = '后端运行成功(前面的路由有问题！！)'
+// })
 
 app.listen(3030, () => {
     console.log("You app is running")

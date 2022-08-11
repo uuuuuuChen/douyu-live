@@ -8,6 +8,7 @@ const {
     fetchWZList,
     fetchHotList
 } = require('../api')
+// const data1 = require('../data/SearchData1')
 
 router.get('/result', async (ctx, next) => {
     const w = encodeURI(ctx.query.page)
